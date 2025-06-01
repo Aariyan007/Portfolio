@@ -27,7 +27,7 @@ const Hero = () => {
                 </motion.p>
             </div>
             <motion.div
-                className="absolute xl:right-[-50%] right-0 top-[15%] lg:top-50"
+                className="absolute xl:right-[-50%] right-0 top-[10%] lg:top-50"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                  transition={{ type: "spring", stiffness: 40, damping: 25, duration: 1.5, delay: 1.3 }}
