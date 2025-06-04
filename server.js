@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path'); // <-- add this
 const UserModel = require('./src/model/schema.js');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -10,18 +9,14 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Serve frontend static files from 'dist'
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// For any GET request not handled by API, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
-// Log all incoming requests (optional, for debugging)
+// Move logging middleware here - BEFORE routes
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.path}`, req.body);
     next();
+});
+
+app.get('/', (req, res) => {
+    res.send('Server is live!');
 });
 
 // Connect to MongoDB
@@ -31,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.error('MongoDB connection error:', err);
 });
 
-// API endpoint for /contact POST
+// Handle /contact form POST
 app.post('/contact', (req, res) => {
     console.log('=== CONTACT ENDPOINT HIT ===');
     console.log('Request body:', req.body);
@@ -47,7 +42,6 @@ app.post('/contact', (req, res) => {
         });
 });
 
-// Listen on dynamic port (Render provides PORT env var)
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running...');
 });
