@@ -9,18 +9,24 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Add middleware to log all requests
+app.get('/', (req, res) => {
+    res.send('Server is live!');
+});
+
+// Log all incoming requests
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.path}`, req.body);
     next();
 });
 
+// Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log('Connected to MongoDB');
 }).catch(err => {
     console.error('MongoDB connection error:', err);
 });
 
+// Handle /contact form POST
 app.post('/contact', (req, res) => {
     console.log('=== CONTACT ENDPOINT HIT ===');
     console.log('Request body:', req.body);
@@ -36,6 +42,7 @@ app.post('/contact', (req, res) => {
         });
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+// Use Render's dynamic port
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Server is running...');
 });
