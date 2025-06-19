@@ -7,10 +7,7 @@ import axios from 'axios';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-
+    
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
@@ -19,33 +16,7 @@ const Header = () => {
     const OpenContact = () => setConactOpen(true);
     const CloseContact = () => setConactOpen(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Basic validation
-        if (!name || !email || !message) {
-            alert('Please fill in all fields');
-            return;
-        }
-
-        axios.post('http://localhost:3000/contact', { name, email, message })
-            .then(result => {
-                console.log('Message sent successfully:', result);
-                alert('Message sent successfully!');
-
-                // Clear form fields
-                setName('');
-                setEmail('');
-                setMessage('');
-
-                // Close the modal
-                CloseContact();
-            })
-            .catch(error => {
-                console.error('Error sending message:', error);
-                alert('Failed to send message. Please try again.');
-            });
-    }
+    
 
     return (
         <header className="absolute top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -308,8 +279,6 @@ const Header = () => {
                                         className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder='Enter Name here...'
                                         name='name'
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
                                         required
                                     />
                                 </div>
@@ -320,8 +289,6 @@ const Header = () => {
                                         className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder='Email here...'
                                         name='email'
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
                                         required
                                     />
                                 </div>
@@ -332,8 +299,6 @@ const Header = () => {
                                         className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder="Type your message here..."
                                         name='message'
-                                        value={message}
-                                        onChange={(e) => setMessage(e.target.value)}
                                         required
                                     ></textarea>
                                 </div>

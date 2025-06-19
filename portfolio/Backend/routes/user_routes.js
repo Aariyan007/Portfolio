@@ -1,0 +1,15 @@
+const express = require('express');
+const cors = require('cors');
+const router = express.Router();
+const UserData = require('../controllers/user_controller')
+
+router.use(
+    cors({
+        credentials : true,
+        origin:"http://localhost:5173"
+    })
+)
+
+router.post('/user',UserData);
+
+module.exports = router;

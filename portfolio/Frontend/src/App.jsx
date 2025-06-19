@@ -1,15 +1,20 @@
-
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/header'
-import Hero from './components/hero'
 import CustomCursor from './components/custom_cursor'
-import{BrowserRouter, Routes, Route} from 'react-router-dom'
+import React, { lazy, Suspense } from 'react'
+
+const Hero = lazy(() => import('./components/hero'))
 
 const App = () => {
   return (
     <>
-    <Header/>
-    <Hero/>
-    <CustomCursor/>
+      <Header />
+      <CustomCursor />
+      <Suspense fallback={<div>Loading....</div>}>
+        <Routes>
+          <Route path='/' element={<Hero/>}/>
+        </Routes>
+      </Suspense>
     </>
   )
 }
