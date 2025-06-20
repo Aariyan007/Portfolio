@@ -1,22 +1,57 @@
-import React from 'react';
+import React, { use } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-    
+
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+    const navigate = useNavigate();
 
     const [contactOpen, setConactOpen] = useState(false);
     const OpenContact = () => setConactOpen(true);
     const CloseContact = () => setConactOpen(false);
 
-    
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    })
+
+    const sendDetail = async (e) => {
+        e.preventDefault();
+        const { name, email, message } = data;
+        try {
+            const res = await axios.post('/user', {
+                name, email, message
+            })
+            if (res.data.error) {
+                toast.error(res.data.error);
+            }
+            else {
+                toast.success("SUBMITTED");
+                setData({
+                    name: "",
+                    email: "",
+                    message: ""
+                })
+                navigate('/');
+            }
+        }
+        catch (err) {
+            console.error(err);
+        }
+
+    }
+
 
     return (
         <header className="absolute top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -41,10 +76,12 @@ const Header = () => {
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ type: 'spring', stiffness: 100, damping: 25, delay: 0.8 }}
-                    className="lg:flex hidden space-x-12 h-10 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md shadow-md">
-                    {["Home", "About", "Projects", "Experience", "Contact"].map((item, index) => (
-                        <motion.a
+                    className="lg:flex hidden space-x-12 h-10 px-6 py-2 rounded-full bg-white/10 backdrop-blur-md shadow-md  ml-[110px]"
+                >
+                    {["Home", "About", "Projects", "Experience"].map((item, index) => (
+                        <motion.button
                             key={item}
+                            type="button"
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{
@@ -53,14 +90,25 @@ const Header = () => {
                                 damping: 25,
                                 delay: 0.8 + index * 0.2,
                             }}
+                            onClick={() => {
+                                if (item === "Home") {
+                                    navigate('/');
+                                } else if (item === "About") {
+                                    navigate('/about');
+                                } else if (item === "Projects") {
+                                    navigate('/projects');
+                                } else if (item === "Experience") {
+                                    navigate('/experience');
+                                }
+                            }}
                             className="relative text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300 group"
-                            href="#"
                         >
                             {item}
                             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-                        </motion.a>
+                        </motion.button>
                     ))}
                 </motion.nav>
+
 
 
                 {/* Icons */}
@@ -175,21 +223,34 @@ const Header = () => {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="md:hidden overflow-hidden bg-white dark:bg-gray-800 shadow-lg px-4 py-5"
                     >
-                        <nav className='flex flex-col space-y-3  '>
+                        <nav className='flex flex-col space-y-3'>
                             {["Home", "About", "Projects", "Experience"].map((item, index) => (
-                                <motion.a
+                                <motion.button
+                                    type="button"
                                     key={item}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: index * 0.1 }}
-                                    onClick={toggleMenu}
-                                    className='text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2 transition-colors duration-300'
-                                    href="#"
+                                    onClick={() => {
+                                        toggleMenu();
+
+                                        if (item === "Home") {
+                                            navigate('/');
+                                        } else if (item === "About") {
+                                            navigate('/about');
+                                        } else if (item === "Projects") {
+                                            navigate('/projects');
+                                        } else if (item === "Experience") {
+                                            navigate('/experience');
+                                        }
+                                    }}
+                                    className='text-left text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium py-2 transition-colors duration-300'
                                 >
                                     {item}
-                                </motion.a>
+                                </motion.button>
                             ))}
                         </nav>
+
 
                         {/* Contact Me Button */}
                         <button
@@ -271,7 +332,7 @@ const Header = () => {
 
                             <h2 className='text-2xl font-semibold mb-4 text-gray-800 dark:text-white'>Contact Me</h2>
 
-                            <form onSubmit={handleSubmit} className="space-y-4" >
+                            <form onSubmit={sendDetail} className="space-y-4" >
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                                     <input
@@ -279,6 +340,7 @@ const Header = () => {
                                         className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder='Enter Name here...'
                                         name='name'
+                                        value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })}
                                         required
                                     />
                                 </div>
@@ -289,6 +351,7 @@ const Header = () => {
                                         className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder='Email here...'
                                         name='email'
+                                        value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })}
                                         required
                                     />
                                 </div>
@@ -299,6 +362,7 @@ const Header = () => {
                                         className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder="Type your message here..."
                                         name='message'
+                                        value={data.message} onChange={(e) => setData({ ...data, message: e.target.value })}
                                         required
                                     ></textarea>
                                 </div>
