@@ -10,7 +10,7 @@ const Experience = lazy(()=> import('./components/experience'))
 const Project = lazy(()=> import('./components/projects'))
 const About = lazy(()=> import('./components/about'))
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'https://portfolio-8ler.onrender.com'
 axios.defaults.withCredentials = true
 
 const App = () => {
