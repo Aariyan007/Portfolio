@@ -6,7 +6,7 @@ const {registerUser} = require('../controllers/user_controller')
 router.use(
     cors({
         credentials : true,
-        origin:"http://localhost:5173"
+        origin:"https://portfolio-1-xlzb.onrender.com"
     })
 )
 
