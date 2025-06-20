@@ -196,7 +196,7 @@ const ProjectsPage = () => {
                 "Tailwind CSS",
                 "Framer Motion",
                 "Vite",
-                "GSAP (optional if used)"
+                "GSAP","ScrollTrigger"
             ],
             "features": [
                 "Apple Vision Pro-like landing page UI",
