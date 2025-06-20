@@ -217,7 +217,7 @@ const ProjectsPage = () => {
 
     ];
 
-    const categories = ['all', 'AI/ML', 'Full Stack', 'Machine Learning', 'Blockchain'];
+    const categories = ['all', 'AI/ML', 'Full Stack', 'BlockChain', 'Random'];
 
     const filteredProjects = filterCategory === 'all'
         ? projects
@@ -335,8 +335,8 @@ const ProjectsPage = () => {
         switch (category) {
             case 'AI/ML': return <Cpu className="w-5 h-5" />;
             case 'Full Stack': return <Globe className="w-5 h-5" />;
-            case 'Machine Learning': return <Zap className="w-5 h-5" />;
-            case 'Blockchain': return <Database className="w-5 h-5" />;
+            case 'Machine Learning': return <Database className="w-5 h-5" />;
+            case 'Blockchain': return <Zap className="w-5 h-5" />;
             default: return <Code className="w-5 h-5" />;
         }
     };
