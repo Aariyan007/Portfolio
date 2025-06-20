@@ -185,7 +185,7 @@ const AboutPage = () => {
                             </motion.a>
 
                             <motion.a
-                                href="/Best_Resume.pdf" // Make sure this file exists in your public folder
+                                href="/Best_resume.pdf" // Make sure this file exists in your public folder
                                 download
                                 className="flex items-center gap-2 px-4 py-2 bg-green-600/50 rounded-lg text-white hover:bg-green-500/50 transition-colors"
                                 whileHover={{ scale: 1.05 }}
