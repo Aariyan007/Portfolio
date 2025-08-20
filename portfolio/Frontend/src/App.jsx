@@ -4,13 +4,14 @@ import CustomCursor from './components/custom_cursor'
 import React, { lazy, Suspense } from 'react'
 import { Toaster } from 'react-hot-toast'
 import axios from 'axios'
+import Loader from './Loader'
 
 const Hero = lazy(() => import('./components/hero'))
 const Experience = lazy(()=> import('./components/experience'))
 const Project = lazy(()=> import('./components/projects'))
 const About = lazy(()=> import('./components/about'))
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'https://portfolio-8ler.onrender.com'
 axios.defaults.withCredentials = true
 
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
       <Header />
       <CustomCursor />
       <Toaster position='bottom-right' toastOptions={{duration : 2000}}/>
-      <Suspense fallback={<div>Loading....</div>}>
+      <Suspense fallback={<Loader/>}>
         <Routes>
           <Route path='/' element={<Hero/>}/>
           <Route path='/experience' element={<Experience/>}/>
