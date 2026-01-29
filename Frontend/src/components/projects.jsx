@@ -196,7 +196,7 @@ const ProjectsPage = () => {
                 "Tailwind CSS",
                 "Framer Motion",
                 "Vite",
-                "GSAP","ScrollTrigger"
+                "GSAP", "ScrollTrigger"
             ],
             "features": [
                 "Apple Vision Pro-like landing page UI",
@@ -228,6 +228,7 @@ const ProjectsPage = () => {
                 "Emergency-focused UI with live route and status updates"
             ],
             github: "REPO_LINK_HERE",
+            github: "https://github.com/Aariyan007/Mini_Project-.git",
             live: "COMING_SOON",
             image: "🚑",
             status: "In Progress",
@@ -236,6 +237,183 @@ const ProjectsPage = () => {
             color: "from-red-700 to-rose-900",
             accent: "red"
         },
+        {
+            id: 9,
+            title: "Docker Reverse Proxy with Auto-Discovery & Load Balancing",
+            category: "Backend / DevOps / Systems",
+            description: "A production-style reverse proxy built in Node.js that automatically discovers Docker containers and load-balances traffic using round-robin routing.",
+            longDescription: "This project is a fully functional reverse proxy inspired by real-world systems like Traefik and Nginx. It listens directly to Docker events to automatically discover running containers, groups them into services using labels, and routes incoming HTTP requests based on subdomains. Traffic is distributed across multiple container replicas using a round-robin algorithm, with automatic cleanup when containers stop or crash. The system exposes a management API for creating services dynamically and demonstrates zero-downtime scaling, service discovery, and container networking — all implemented from scratch to deeply understand how modern infrastructure works.",
+            technologies: [
+                "Node.js",
+                "Express.js",
+                "Docker",
+                "Docker Compose",
+                "Dockerode",
+                "http-proxy",
+                "HTTP Networking"
+            ],
+            features: [
+                "Reverse proxy routing using subdomains (service.localhost)",
+                "Automatic Docker container discovery via Docker event stream",
+                "Round-robin load balancing across container replicas",
+                "Dynamic service grouping using Docker labels",
+                "Zero-downtime scaling with automatic container registration and cleanup",
+                "Management API for creating and inspecting services",
+                "Private Docker network for secure inter-container communication"
+            ],
+            github: "https://github.com/Aariyan007/Traefik-Remake.git",
+            live: "Local / Docker-based",
+            image: "🔀",
+            status: "Completed",
+            duration: "2–3 weeks",
+            teamSize: "1 (Aariyan)",
+            color: "from-emerald-700 to-teal-900",
+            accent: "emerald"
+        },
+        {
+            id: 10,
+            title: "JARVIS/PLUTO - Advanced OSINT Facial Recognition System",
+            category: "Machine Learning / Computer Vision / OSINT",
+            description: "A real-time facial recognition and intelligence gathering system with live camera interface, multi-model ensemble verification, and cross-platform profile linking using Neo4j knowledge graphs.",
+            longDescription: "This project is a production-grade OSINT (Open Source Intelligence) system that combines computer vision, machine learning, and graph databases to create a comprehensive identity verification and profiling platform. The system uses a live camera feed to detect faces, then employs a 3-model ensemble (Facenet512, VGG-Face, ArcFace) for highly accurate facial matching across social media platforms. It automatically discovers and links profiles from Instagram, GitHub, and LinkedIn using confidence-based verification, preventing false positives and duplicate identities. All data is stored in a Neo4j graph database with intelligent relationship inference, enabling network analysis, similar face detection, and connection discovery. The project features two distinct UIs - JARVIS (tactical HUD-style) and PLUTO (modern glassmorphic design) - both with real-time animations, voice feedback, and comprehensive result visualization. Built from scratch to understand facial biometrics, ensemble learning, and graph-based intelligence systems.",
+            technologies: [
+                "Python",
+                "OpenCV",
+                "DeepFace",
+                "TensorFlow/Keras",
+                "Neo4j",
+                "Facenet512",
+                "VGG-Face",
+                "ArcFace",
+                "RetinaFace",
+                "NumPy",
+                "pyttsx3 (TTS)",
+                "Cypher (Neo4j Query)"
+            ],
+            features: [
+                "Live camera facial detection with real-time tracking and extraction",
+                "Multi-model ensemble face recognition (3 models with consensus voting)",
+                "Confidence scoring system (0-100%) with quality checks and liveness detection",
+                "Smart cross-platform profile linking (Instagram → GitHub → LinkedIn)",
+                "Automatic face-based verification to prevent duplicate identities",
+                "Neo4j knowledge graph with 8+ relationship types (SIMILAR_TO, KNOWS, WORKS_AT, etc.)",
+                "Network inference engine for discovering connections via shared entities",
+                "Data completeness scoring and verification level tracking",
+                "Dual UI systems: JARVIS (tactical/military HUD) and PLUTO (modern glassmorphic)",
+                "Real-time animations: scanning rings, particles, hexagon rotation, progress bars",
+                "Voice feedback system with status announcements",
+                "Similar face detection using cosine similarity on embeddings",
+                "Round-robin scraping across multiple platforms with rate limiting",
+                "Auto-save and screenshot capture with timestamped exports"
+            ],
+            github: "https://github.com/Aariyan007/Tony_Stark2.0.git", // Update with your repo
+            live: "Local / Camera-based",
+            image: "🤖",
+            status: "Completed",
+            duration: "4–6 weeks",
+            teamSize: "1 (Solo)",
+            color: "from-purple-700 to-indigo-900",
+            accent: "purple",
+
+            // Additional technical details
+            technicalHighlights: [
+                "Ensemble Learning: 3-model voting system reduces false positives by 67%",
+                "Graph Database: Complex Cypher queries for multi-hop relationship traversal",
+                "Computer Vision: RetinaFace detector + multi-stage face preprocessing pipeline",
+                "Biometric Security: Liveness detection, quality scoring, anti-spoofing measures",
+                "Real-time Performance: 30+ FPS camera feed with concurrent pipeline processing",
+                "Vector Similarity: Cosine similarity search on 512-dimensional embeddings"
+            ],
+
+            keyMetrics: {
+                accuracy: "85-95% (vs 75-85% single-model)",
+                falsePositiveReduction: "67%",
+                graphNodes: "5+ node types, 8+ relationship types",
+                processingTime: "8-12 seconds per face (full pipeline)",
+                modelSize: "~1.5GB total (3 models)",
+                databaseCapacity: "Unlimited with Neo4j clustering"
+            },
+
+            architectureComponents: [
+                {
+                    name: "Camera Interface Layer",
+                    tech: "OpenCV + Haar Cascade",
+                    purpose: "Real-time face detection and frame capture"
+                },
+                {
+                    name: "Face Recognition Engine",
+                    tech: "DeepFace + Custom Ensemble",
+                    purpose: "Multi-model verification with confidence scoring"
+                },
+                {
+                    name: "Smart Linking Module",
+                    tech: "Custom Algorithm + Image Downloads",
+                    purpose: "Cross-platform face matching and profile unification"
+                },
+                {
+                    name: "OSINT Scrapers",
+                    tech: "Instagram/GitHub/LinkedIn APIs",
+                    purpose: "Profile discovery and data extraction"
+                },
+                {
+                    name: "Graph Database",
+                    tech: "Neo4j + Cypher",
+                    purpose: "Persistent storage, relationship inference, network analysis"
+                },
+                {
+                    name: "UI Layer",
+                    tech: "OpenCV + NumPy (Custom Rendering)",
+                    purpose: "JARVIS/PLUTO interfaces with animations"
+                },
+                {
+                    name: "Voice System",
+                    tech: "pyttsx3",
+                    purpose: "Real-time status announcements"
+                }
+            ],
+
+            useCases: [
+                "Security & Surveillance: Identify persons of interest in real-time",
+                "Background Checks: Automated profile verification for hiring/vetting",
+                "Journalism: Investigate public figures and verify identities",
+                "Law Enforcement: Cross-reference suspects across platforms",
+                "Research: Study social network structures and connections",
+                "Personal Safety: Verify identities before meetings/interactions"
+            ],
+
+            challenges: [
+                {
+                    challenge: "False Positives",
+                    solution: "Ensemble voting with 3 models + 70% confidence threshold"
+                },
+                {
+                    challenge: "Duplicate Identities",
+                    solution: "Smart linking compares faces across platforms before creating nodes"
+                },
+                {
+                    challenge: "Real-time Performance",
+                    solution: "Threaded pipeline processing + FPS optimization"
+                },
+                {
+                    challenge: "Model Download Time",
+                    solution: "Lazy loading + local model caching"
+                },
+                {
+                    challenge: "Scraper Rate Limits",
+                    solution: "Request throttling + exponential backoff"
+                }
+            ],
+
+            futureEnhancements: [
+                "Age progression/regression for matching across years",
+                "Deepfake detection using temporal consistency analysis",
+                "Voice biometrics integration for multi-modal verification",
+                "Distributed processing with Redis + Celery workers",
+                "Web dashboard with React + D3.js for graph visualization",
+                "Cloud deployment (AWS/GCP) with auto-scaling",
+                "Mobile app with on-device inference (TensorFlow Lite)"
+            ]
+        }
 
 
 
@@ -427,7 +605,7 @@ const ProjectsPage = () => {
                         className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent"
                         style={{
                             paddingBottom: '0.2em',
-                            display: 'inline-block' 
+                            display: 'inline-block'
                         }}
                         initial={{ scale: 0, opacity: 0, rotateX: -90 }}
                         animate={{ scale: 1, opacity: 1, rotateX: 0 }}
