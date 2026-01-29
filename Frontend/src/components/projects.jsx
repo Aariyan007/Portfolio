@@ -212,7 +212,31 @@ const ProjectsPage = () => {
             "teamSize": "Solo Project",
             "color": "from-cyan-700 to-blue-900",
             "accent": "blue"
-        }
+        },
+        {
+            id: 8,
+            title: "MEI: Smart Emergency Response & Ambulance Routing System",
+            category: "Full Stack / Simulation / AI",
+            description: "A smart emergency response platform that simulates ambulance routing, predicts ETA, and visualizes emergency handling in real time.",
+            longDescription: "MEI (Medical Emergency Intelligence) is a simulation-focused project designed to model how emergency services can respond faster and smarter. The system visualizes ambulances on an interactive map, calculates optimal routes to hospitals, and dynamically predicts ETA with bias correction. Built with a strong frontend focus, MEI emphasizes clarity, real-time feedback, and intuitive emergency visuals such as live routing, hospital cards, and ETA animations. The project demonstrates how software can improve decision-making during critical situations.",
+            technologies: ["React", "Leaflet.js", "Node.js", "Express.js", "OpenStreetMap", "JavaScript"],
+            features: [
+                "Real-time ambulance movement simulation on interactive maps",
+                "Optimal route calculation to nearest hospitals",
+                "Dynamic ETA prediction with bias correction logic",
+                "Hospital availability and distance visualization",
+                "Emergency-focused UI with live route and status updates"
+            ],
+            github: "REPO_LINK_HERE",
+            live: "COMING_SOON",
+            image: "🚑",
+            status: "In Progress",
+            duration: "Ongoing",
+            teamSize: "1 (Aariyan)",
+            color: "from-red-700 to-rose-900",
+            accent: "red"
+        },
+
 
 
     ];
