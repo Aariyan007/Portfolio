@@ -645,9 +645,9 @@ const ProjectsPage = () => {
                     className="grid md:grid-cols-4 gap-6"
                 >
                     {[
-                        { label: "Projects Completed", value: "25+", icon: Code, color: "blue" },
+                        { label: "Projects Completed", value: "50+", icon: Code, color: "blue" },
                         { label: "Technologies Used", value: "30+", icon: Zap, color: "purple" },
-                        { label: "Lines of Code", value: "10K+", icon: Database, color: "green" },
+                        { label: "Lines of Code", value: "70K+", icon: Database, color: "green" },
                         { label: "Open Source Contributions", value: "5+", icon: Github, color: "yellow" }
                     ].map((stat, index) => (
                         <motion.div
